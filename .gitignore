@@ -1,0 +1,25 @@
+# Data: never commit. The database has its own licence agreement, and every
+# file in data/ holds study-level information derived from it.
+dynamicrenalstudy_DICOM_package/
+data/
+*.zip
+*.dcm
+*.npz
+
+# Outputs written by the scripts (sanity figures of real studies, article figures)
+reports/
+artigo/
+
+# Trained weights
+*.pt
+*.pth
+*.ckpt
+
+# Python and editors
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+.vscode/
+.idea/

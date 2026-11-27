@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the article and this archived version."
+title: "Spatiotemporal deep learning for differential renal function estimation from dynamic renal scintigraphy (code)"
+version: 1.0.0
+type: software
+license: MIT
+abstract: "Code to prepare the Database of Dynamic Renal Scintigraphy, train 2D and 3D convolutional neural networks that estimate the differential renal function from the raw posterior projection (summed image, temporal mosaic and sequence of frames), and reproduce the analyses and figures of the accompanying article."
+keywords:
+  - dynamic renal scintigraphy
+  - renography
+  - differential renal function
+  - deep learning
+  - convolutional neural networks
+authors:
+  - given-names: Rodrigo Avelino
+    family-names: Lucas
+    affiliation: "University of Fortaleza (UNIFOR)"
+  - given-names: Joel Sotero
+    family-names: da Cunha Neto
+    affiliation: "University of Fortaleza (UNIFOR)"
+  - given-names: Henrique Chaves Macêdo
+    family-names: de Sousa
+    affiliation: "University of Fortaleza (UNIFOR)"
+  - given-names: João Pedro Leite Pereira
+    family-names: de Queiroz
+    affiliation: "University of Fortaleza (UNIFOR)"
+  - given-names: Victor Kainã de Lima
+    family-names: Dias
+    affiliation: "University of Fortaleza (UNIFOR)"
+  - given-names: Victor Targino
+    family-names: Morais
+    affiliation: "University of Fortaleza (UNIFOR)"

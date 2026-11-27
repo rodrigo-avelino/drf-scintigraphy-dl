@@ -2,7 +2,7 @@
 
 Code for the article *Spatiotemporal Deep Learning for Differential Renal Function Estimation
 from Dynamic Renal Scintigraphy: A Comparative Study of 2D and 3D Convolutional Networks*
-(submitted to EJNMMI Physics; the reference will be added after publication).
+(manuscript in preparation; the reference will be added after publication).
 
 The code estimates the differential renal function (DRF), the percentage of total renal
 function attributed to the left kidney, directly from the raw posterior projection of

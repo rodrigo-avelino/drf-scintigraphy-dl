@@ -30,6 +30,7 @@ from pathlib import Path
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
+from matplotlib.lines import Line2D  # noqa: E402
 import numpy as np  # noqa: E402
 import pandas as pd  # noqa: E402
 
@@ -210,6 +211,11 @@ def fig2_predito(preds, previas):
         ax.set_title(nome, color=INK, pad=4)
         ax.set_xlabel("Reference DRF (%)")
         ax.set_ylabel("Predicted DRF (%)")
+    # chave das retas dentro do grafico, como pedem as normas da revista
+    chave = [Line2D([], [], color=BASE, lw=0.8, label="Identity"),
+             Line2D([], [], color=INK, lw=1.0, label="Least-squares fit")]
+    eixos[0, 0].legend(handles=chave, loc="lower right", frameon=False,
+                       handlelength=1.8)
     for ax, t in zip(eixos.ravel(), "abcd"):
         letra(ax, t, x=-0.12)
     fig.tight_layout(w_pad=2.0, h_pad=1.6)

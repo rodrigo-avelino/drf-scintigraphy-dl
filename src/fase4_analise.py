@@ -660,7 +660,9 @@ def secao_validacao_interna(fontes, dec, saida_csv, pdi=None):
     tab.to_csv(saida_csv)
     return txt + [
         "Validação interna: em cada fold f, o fold (f + 1) mod 5 reduz o lr, "
-        "para o treino e escolhe a melhor época; o fold f só é previsto no fim. "
+        "para o treino e escolhe a melhor época; o fold f, de teste, é previsto "
+        "com o checkpoint escolhido (o erro nele, registrado a cada época, serve "
+        "só para diagnóstico). "
         "A PDI continua recalibrada nos 4 folds de treino (não escolhe nada no "
         "fold avaliado). Mesmas definições da rodada final." +
         (f" Tamanhos: {tam}." if tam else ""), "",

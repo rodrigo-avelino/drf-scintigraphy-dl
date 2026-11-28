@@ -15,10 +15,11 @@ compared:
 | Temporal mosaic | nine consecutive intervals tiled in a 3 × 3 grid | VGG19 pre-trained on ImageNet |
 | 3D sequence | 19 one-minute frames | R3D-18 pre-trained on Kinetics-400 |
 
-A conventional reference without learning is computed on the same studies: the DRF from two
-square regions of interest over the kidneys (60 to 150 s), linearly recalibrated on the
-training folds of each split. Evaluation uses five-fold patient-level cross-validation with
-fixed partitions, a validation fold separate from the test fold, and four seeds.
+As a baseline without deep learning, a simplified automatic estimate is computed on the same
+studies: the DRF from two square regions of interest over the kidneys in the posterior frames
+from 60 to 150 s, without background correction, linearly recalibrated on the four non-test
+folds of each split. Evaluation uses five-fold patient-level cross-validation with fixed
+partitions, a validation fold separate from the test fold, and four seeds.
 
 > Research code. It is not a medical device and must not be used for clinical decisions.
 
@@ -47,7 +48,7 @@ folds.
 ## Data
 
 The data are not distributed with this code. They come from the Database of Dynamic Renal
-Scintigraphy (www.dynamicrenalstudy.org), under the terms of its licence agreement. Download the
+Scintigraphy (www.dynamicrenalstudy.org), under the terms of its license agreement. Download the
 DICOM package and extract it at the root of this repository, so that these folders exist:
 
     dynamicrenalstudy_DICOM_package/database/DATA_DICOM/   one folder per study, multi-frame DICOM
@@ -87,8 +88,10 @@ final round with the seeds 5042, 6042, 7042 and 8042:
     python src/fase4_fila.py --etapas ablacao             # ablation of the 3D configuration
 
 - `validacao_interna`: the three methods with internal validation, in which fold (f + 1) mod 5
-  selects the learning-rate reduction, early stopping and best epoch, and fold f is predicted
-  only at the end (60 trainings, about 4.5 h on the RTX 4060).
+  selects the learning-rate reduction, early stopping and best epoch, and fold f, the test
+  fold, is predicted with the selected checkpoint (60 trainings, about 4.5 h on the RTX 4060).
+  The error on fold f is also recorded at each epoch, for diagnosis only; no training choice
+  uses it.
 - `final colapsado`: the same methods in the first runs, in which the test fold also served as
   the validation set.
 - `--simular` prints the plan without training. Interrupted queues resume from the last
@@ -153,18 +156,18 @@ few download the pre-trained torchvision weights on the first run, and `--gpu` n
 | braço, controle | arm of a comparison; the control arm is the mosaic |
 | semente | random seed |
 | mosaico, colapsado | temporal mosaic; collapsed (summed) image |
-| validação interna (`_vi`) | fold (f + 1) mod 5 selects the training choices; fold f is only predicted |
+| validação interna (`_vi`) | fold (f + 1) mod 5 selects the training choices; fold f is the test fold |
 | triagem | screening with two seeds and three folds |
 | cabeça espacial | spatial head of the 3D network |
 | aquecimento | learning-rate warm-up |
 | saída na média (`_sm`) | final layer initialized at the mean of the target |
 | lk, lk_cru | reference DRF (% left kidney); raw ROI-based estimate |
-| PDI crua, PDI recal | conventional ROI-based estimate, raw and recalibrated |
+| PDI crua, PDI recal | automatic ROI-based estimate (the baseline), raw and recalibrated |
 | híbridos (drshyb) | hybrid studies with known DRF, used for training only |
 
 ## Citation and license
 
 Please cite the article (reference to be added after publication) and the archived version of
 this code; `CITATION.cff` has the metadata. The code is released under the MIT License (see
-`LICENSE`). The license covers the code only; the data remain under the licence agreement of
+`LICENSE`). The license covers the code only; the data remain under the license agreement of
 the Database of Dynamic Renal Scintigraphy.

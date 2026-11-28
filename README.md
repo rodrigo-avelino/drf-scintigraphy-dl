@@ -1,5 +1,7 @@
 # Spatiotemporal deep learning for differential renal function estimation
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24615750.svg)](https://doi.org/10.5281/zenodo.24615750)
+
 Code for the article *Spatiotemporal Deep Learning for Differential Renal Function Estimation
 from Dynamic Renal Scintigraphy: A Comparative Study of 2D and 3D Convolutional Networks*
 (manuscript in preparation; the reference will be added after publication).
@@ -168,6 +170,8 @@ few download the pre-trained torchvision weights on the first run, and `--gpu` n
 ## Citation and license
 
 Please cite the article (reference to be added after publication) and the archived version of
-this code; `CITATION.cff` has the metadata. The code is released under the MIT License (see
-`LICENSE`). The license covers the code only; the data remain under the license agreement of
-the Database of Dynamic Renal Scintigraphy.
+this code on Zenodo. The article cites version 1.0.0 (https://doi.org/10.5281/zenodo.24615751);
+the DOI 10.5281/zenodo.24615750 always resolves to the latest version. `CITATION.cff` has the
+metadata. The code is released under the MIT License (see `LICENSE`). The license covers the
+code only; the data remain under the license agreement of the Database of Dynamic Renal
+Scintigraphy.
